@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlineZone Academy - أكاديمية الدورة التعليمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<meta name="google-site-verification" content="nBj-CRwsLLOet_nqxKUkdapoQDhO84iOD2KFlsxX-uo" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* الترويسة */
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* قسم البطل */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.9)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+        }
+        
+        /* قسم الدورات */
+        .courses-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        
+        .courses-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-content {
+            padding: 25px;
+        }
+        
+        .course-category {
+            display: inline-block;
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .course-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .course-duration, .course-level {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #777;
+        }
+        
+        .course-link {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .course-link:hover {
+            background-color: var(--primary-color);
+        }
+        
+        /* قسم مميزات الأكاديمية */
+        .features-section {
+            background-color: var(--light-color);
+            padding: 80px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+        
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* التذييل */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-right: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        
+        /* قسم الإحصائيات */
+        .stats-section {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+		.logo-subtitle {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: -5px;
+    font-style: italic;
+}
+    </style>
+</head>
+<body>
+    <!-- الترويسة -->
+    <header>
+        <div class="container header-content">
+           <div class="logo">
+    <i class="fas fa-graduation-cap"></i>
+    <div>
+        <h1>Online<span>Zone</span> Academy</h1>
+        <p class="logo-subtitle">by suissi ghassen</p>
+    </div>
+</div>
+			<h4>مع الأستاذة أميرة الفهري</h4>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">الرئيسية</a></li>
+                    <li><a href="#courses">الدورات</a></li>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section class="hero">
+        <div class="container">
+            <h2>ارتق بمهاراتك مع OnlineZone Academy</h2>
+            <p>اكتشف مجموعة متنوعة من الدورات التدريبية عبر الإنترنت المصممة لتطوير مهاراتك في مختلف المجالات. تعلم في أي وقت ومن أي مكان وفقًا لسرعتك الخاصة.</p>
+			 <p>اتصل بنا لأخذ معطيات الدخول للدورات</p>
+            <a href="#courses" class="cta-button">استعرض الدورات <i class="fas fa-arrow-left"></i></a>
+        </div>
+    </section>
+
+    <!-- قسم الإحصائيات -->
+    <section class="stats-section" id="about">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-text">دورات متخصصة</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-text">تعليم عن بعد</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">دعم فني متواصل</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">شهادة</div>
+                    <div class="stat-text">معتمدة مع كل دورة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الدورات -->
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>الدورات المتوفرة</h2>
+                <p>اختر من بين دوراتنا المتخصصة التي صممها خبراء في مجالاتهم</p>
+            </div>
+            
+            <div class="courses-filter">
+                <button class="filter-btn active" data-filter="all">جميع الدورات</button>
+                <button class="filter-btn" data-filter="math">الرياضيات</button>
+                <button class="filter-btn" data-filter="training">التدريب</button>
+                <button class="filter-btn" data-filter="marketing">التسويق</button>
+                <button class="filter-btn" data-filter="language">اللغات</button>
+            </div>
+            
+            <div class="courses-grid" id="coursesContainer">
+                <!-- سيتم إضافة الدورات بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا OnlineZone Academy؟</h2>
+                <p>نقدم لك تجربة تعليمية فريدة تجمع بين الجودة والمرونة</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>مدربون خبراء</h3>
+                    <p>دوراتنا يقدمها مدربون محترفون ذوو خبرة عملية واسعة في مجالات تخصصهم</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <h3>تعلم مرن</h3>
+                    <p>تعلم في أي وقت ومن أي مكان، وفقًا لجدولك الزمني وسرعتك الخاصة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>شهادات معتمدة</h3>
+                    <p>احصل على شهادات إتمام معتمدة من الأكاديمية مع كل دورة تكملها</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم مستمر</h3>
+                    <p>فريق الدعم الفني متاح على مدار الساعة للإجابة على استفساراتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OnlineZone Academy</h3>
+                    <p>نحن ملتزمون بتقديم أفضل تجربة تعلم عبر الإنترنت. مهمتنا هي تمكين الأفراد من خلال التعليم عالي الجودة في مختلف المجالات.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>الدورات المتوفرة</h3>
+                    <ul>
+                        <li><a href="#" data-filter="math">الحساب الذهني</a></li>
+                        <li><a href="#" data-filter="training">تدريب المدربين</a></li>
+                        <li><a href="#" data-filter="marketing">التسويق الرقمي</a></li>
+                        <li><a href="#" data-filter="language">الإنجليزية للمبتدئين بالمجاني </a></li>
+                        <li><a href="#" data-filter="language">الإنجليزية المتقدمة بالمجاني</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#courses">جميع الدورات</a></li>
+                        <li><a href="#features">مميزات الأكاديمية</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li ><i class="fas fa-map-marker-alt"></i> paris, france</li>
+                                     <li><i class="fas fa-phone"></i><span dir="ltr">+216 27 294 969</span></li>
+                        <li ><i class="fas fa-envelope"></i> info@onlinezone.academy.com</li>
+                        <li ><i class="fas fa-clock"></i> الدعم الفني: 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2025 OnlineZone Academy</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // بيانات الدورات التدريبية الخمسة التي طلبتها
+        const courses = [
+            {
+                id: 1,
+                title: "الحساب الذهني",
+                description: "طور مهاراتك في الحساب الذهني السريع وتعلم تقنيات حسابية مبتكرة تساعدك على إجراء العمليات الحسابية المعقدة ذهنيًا بسرعة ودقة.",
+                category: "math",
+                duration: "6 أسابيع",
+                level: "مبتدئ - متقدم",
+                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                link: "https://onlinezoneacademy.netlify.app/math.html" // يمكنك تغيير هذا الرابط
+            },
+            {
+                id: 2,
+                title: "تدريب المدربين",
+                description: "برنامج متخصص لتأهيل المدربين المحترفين، يتضمن أساليب التدريس الحديثة، تصميم المواد التدريبية، وإدارة جلسات التدريب بفعالية.",
+                category: "training",
+                duration: "8 أسابيع",
+                level: "متوسط - متقدم",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                link: "https://onlinezoneacademy.netlify.app/coach.html"
+            },
+            {
+                id: 3,
+                title: "التسويق الرقمي",
+                description: "إتقان استراتيجيات التسويق الرقمي الفعالة بما في ذلك التسويق عبر وسائل التواصل الاجتماعي، تحسين محركات البحث، التسويق بالمحتوى وتحليل البيانات.",
+                category: "marketing",
+                duration: "10 أسابيع",
+                level: "مبتدئ - متوسط",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                link: "https://onlinezoneacademy.netlify.app/marketing.html"
+            },
+            {
+                id: 4,
+                title: "الإنجليزية للمبتدئين",
+                description: "دورة شاملة للمبتدئين تبدأ من الصفر، تغطي أساسيات اللغة الإنجليزية من قواعد، مفردات، محادثة واستماع مع تمارين عملية يومية.",
+                category: "language",
+                duration: "12 أسبوع",
+                level: "مبتدئ",
+                image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                link: "https://onlinezoneacademy.netlify.app/english.html"
+            },
+            {
+                id: 5,
+                title: "الإنجليزية المتقدمة",
+                description: "تطوير مهارات اللغة الإنجليزية للمستوى المتقدم مع التركيز على المحادثة المتقدمة، الكتابة الأكاديمية، والفهم العميق للثقافة الإنجليزية.",
+                category: "language",
+                duration: "10 أسابيع",
+                level: "متقدم",
+                image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                link: "https://onlinezoneacademy.netlify.app/eng-av.html"
+            }
+        ];
+
+        // عناصر DOM
+        const coursesContainer = document.getElementById('coursesContainer');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // عرض الدورات في الصفحة
+        function displayCourses(filter = 'all') {
+            coursesContainer.innerHTML = '';
+            
+            const filteredCourses = filter === 'all' 
+                ? courses 
+                : courses.filter(course => course.category === filter);
+            
+            filteredCourses.forEach(course => {
+                const courseCard = document.createElement('a');
+                courseCard.className = 'course-card';
+                courseCard.setAttribute('data-category', course.category);
+                courseCard.setAttribute('href', course.link);
+                courseCard.setAttribute('target', '_blank'); // يفتح الرابط في تبويب جديد
+                
+                courseCard.innerHTML = `
+                    <div class="course-img" style="background-image: url('${course.image}')"></div>
+                    <div class="course-content">
+                        <span class="course-category">${getCategoryName(course.category)}</span>
+                        <h3 class="course-title">${course.title}</h3>
+                        <p class="course-description">${course.description}</p>
+                        <div class="course-meta">
+                            <div class="course-duration">
+                                <i class="far fa-clock"></i>
+                                <span>${course.duration}</span>
+                            </div>
+                            <div class="course-level">
+                                <i class="fas fa-signal"></i>
+                                <span>${course.level}</span>
+                            </div>
+                        </div>
+                        <div class="course-link">سجل في الدورة الآن</div>
+                    </div>
+                `;
+                
+                coursesContainer.appendChild(courseCard);
+            });
+        }
+
+        // تصفية الدورات حسب الفئة
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // إزالة الفئة النشطة من جميع الأزرار
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // إضافة الفئة النشطة للزر المحدد
+                this.classList.add('active');
+                
+                // تصفية الدورات
+                const filter = this.getAttribute('data-filter');
+                displayCourses(filter);
+            });
+        });
+
+        // الحصول على اسم الفئة بالعربية
+        function getCategoryName(category) {
+            const categories = {
+                'math': 'الرياضيات',
+                'training': 'التدريب',
+                'marketing': 'التسويق',
+                'language': 'اللغات'
+            };
+            return categories[category] || category;
+        }
+
+        // إضافة مستمعي الأحداث لروابط التذييل
+        document.querySelectorAll('.footer-column a[data-filter]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const filter = this.getAttribute('data-filter');
+                
+                // تحديث أزرار التصفية
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-filter') === filter) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // تصفية وعرض الدورات
+                displayCourses(filter);
+                
+                // التمرير إلى قسم الدورات
+                document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // التمرير السلس للروابط الداخلية
+        document.querySelectorAll('nav a, .cta-button').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                
+                if (targetId && targetId.startsWith('#') && targetId !== '#') {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // تحديث حالة الروابط النشطة
+                        document.querySelectorAll('nav a').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // إضافة مستمع حدث لعنوان الصفحة للرابط النشط
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // تهيئة الصفحة بعرض جميع الدورات
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCourses();
+        });
+
+        // يمكنك تغيير روابط الدورات بسهولة من خلال تعديل المصفوفة courses
+        // قم بتغيير قيمة الحقل "link" لكل دورة بالرابط الذي تريده
+    </script>
+</body>
+</html>

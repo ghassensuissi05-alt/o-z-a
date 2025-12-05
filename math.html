@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية الحساب الذهني - الدورة الشاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3a57e8;
+            --primary-dark: #2f47c2;
+            --secondary: #ff8aa5;
+            --success: #28a745;
+            --warning: #ffb800;
+            --danger: #ff4c4c;
+            --light: #f3f6ff;
+            --dark: #333;
+            --white: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f3f6ff 0%, #e8ecff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #dee3ff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            width: 140px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .form-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(58, 87, 232, 0.15);
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #bfc3e0;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-success { background: var(--success); }
+        .btn-warning { background: var(--warning); color: #333; }
+        .btn-danger { background: var(--danger); }
+        .btn-secondary { background: var(--secondary); }
+        .btn-print { background: #6c757d; }
+
+        .hidden { display: none; }
+
+        .lesson {
+            background: var(--white);
+            padding: 20px;
+            margin: 12px 0;
+            border-radius: 12px;
+            border: 1px solid #e0e4f5;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lesson.completed {
+            border-right: 6px solid var(--success);
+            background: rgba(40, 167, 69, 0.05);
+        }
+
+        .lesson-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .user-welcome {
+            background: linear-gradient(135deg, var(--primary), #6a11cb);
+            color: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+
+        .progress-container {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 12px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 0.5s;
+            width: 0%;
+        }
+
+        .lesson-content {
+            margin-bottom: 25px;
+        }
+
+        .lesson-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-right: 4px solid var(--primary);
+        }
+
+        .technique-box {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-right: 4px solid var(--warning);
+        }
+
+        .tip-box {
+            background: #e6f7ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-right: 4px solid #1890ff;
+        }
+
+        .exercise-box {
+            background: #f0f4ff;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 2px dashed var(--primary);
+        }
+
+        .exercise-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .exercise-formula {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: var(--primary-dark);
+        }
+
+        .exercise-input {
+            width: 120px;
+            margin: 10px auto;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .exercise-feedback {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            min-height: 24px;
+        }
+
+        .correct { color: var(--success); }
+        .incorrect { color: var(--danger); }
+
+        .rule-box {
+            background: #f0fff4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-right: 3px solid var(--success);
+        }
+
+        .example-box {
+            background: #fff0f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-right: 3px solid #ff4d94;
+        }
+
+        .certificate-box {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
+
+        .certificate-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .cert-title {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .cert-name {
+            font-size: 36px;
+            color: var(--primary);
+            margin: 25px 0;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            padding: 10px 30px;
+        }
+
+        .finger-method {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .finger {
+            width: 40px;
+            height: 60px;
+            background: #ffd700;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .finger::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            width: 30px;
+            height: 8px;
+            background: #ffa500;
+            border-radius: 4px;
+        }
+
+        .quick-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .quick-tip {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .debug-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .user-code {
+            font-family: monospace;
+            background: #f8f9fa;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+
+        .cert-number {
+            font-size: 18px;
+            color: #666;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        .print-only {
+            display: none;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .certificate-box, .certificate-box * {
+                visibility: visible;
+            }
+            .certificate-box {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 40px;
+            }
+            .no-print {
+                display: none !important;cert-number;
+            }
+            .print-only {
+                display: block;
+            }
+            .cert-title {
+                font-size: 40px;
+            }
+            .cert-name {
+                font-size: 44px;
+            }
+            .cert-number {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .form-box { padding: 20px; }
+            .cert-name { font-size: 28px; }
+        }
+
+        .certificate-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .certificate-actions button {
+            width: auto;
+            padding: 12px 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo">Onlinezone Academy</div>
+    <h1>أكاديمية التفوق في الحساب الذهني</h1>
+    <p>دورة شاملة لتطوير مهاراتك الحسابية</p>
+</div>
+
+<div class="container">
+    <!-- شاشة الدخول -->
+    <div id="loginScreen" class="form-box">
+        <h2 style="text-align: center; color: var(--primary);">تسجيل الدخول</h2>
+        
+        <input type="text" id="fName" placeholder="الاسم" >
+        <input type="text" id="lName" placeholder="القب" >
+        <input type="password" id="pass" placeholder="كود الدخول" >
+        
+        <button onclick="login()"><i class="fas fa-sign-in-alt"></i> دخول</button>
+        <button onclick="adminLogin()" class="btn-warning"><i class="fas fa-user-shield"></i> دخول المسؤول</button>
+        
+   
+    </div>
+
+    <!-- صفحة المستخدم -->
+    <div id="userPage" class="hidden">
+        <div class="user-welcome">
+            <h2>مرحبا <span id="username"></span>! 👋</h2>
+            <p>رحلة إتقان الحساب الذهني تبدأ من هنا</p>
+            
+            <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                <span>التقدم في الدورة:</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div id="lessonsList"></div>
+
+        <button onclick="finishCourse()" class="btn-success" id="finishBtn" disabled>
+            <i class="fas fa-trophy"></i> إنهاء الدورة والحصول على الشهادة
+        </button>
+        <button onclick="logout()" class="btn-danger">
+            <i class="fas fa-sign-out-alt"></i> خروج
+        </button>
+
+        <div id="lessonBox" class="hidden"></div>
+    </div>
+
+    <!-- صفحة المسؤول -->
+    <div id="adminPage" class="hidden">
+        <h2 style="text-align: center; color: var(--primary);">لوحة التحكم</h2>
+        
+        <div class="form-box">
+            <h3>إضافة مستخدم جديد</h3>
+            <input type="text" id="newF" placeholder="الاسم">
+            <input type="text" id="newL" placeholder="اللقب">
+            <input type="text" id="newP" placeholder="كود الدخول">
+            <button onclick="addUser()"><i class="fas fa-user-plus"></i> إضافة مستخدم</button>
+        </div>
+
+        <h3 style="margin-top: 20px;">المستخدمون:</h3>
+        <div id="usersList"></div>
+
+        <button onclick="backToLogin()" style="margin-top: 20px;">
+            <i class="fas fa-arrow-right"></i> رجوع
+        </button>
+    </div>
+
+    <!-- الشهادة -->
+    <div id="certificatePage" class="hidden">
+        <div class="certificate-box">
+            <h2 class="cert-title">🏆OnlineZone Academy</h2>
+            <div style="color: #666; margin-bottom: 30px;">شهادة إتمام الدورة الشاملة في الحساب الذهني</div>
+
+            <div class="cert-name" id="certName"></div>
+            
+           
+
+            <p>تهانينا! لقد أتممت بنجاح دورة الحساب الذهني الشاملة وأظهرت تميزاً في إتقان المهارات الحسابية.</p>
+            <p>تم منح هذه الشهادة في: <span id="certDate"></span></p>
+
+            <div style="display: flex; justify-content: center; gap: 40px; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div style="border-bottom: 2px solid #ddd; padding-bottom: 5px;">مدير الأكاديمية</div>
+                    <div style="font-weight: bold;">غسان السويسي</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="border-bottom: 2px solid #ddd; padding-bottom: 5px;">المدرب المعتمد</div>
+                    <div style="font-weight: bold;">الأستاذة أميرة الفهري</div>
+                </div>
+            </div>
+ <div class="cert-number" id="certNumber"></div>
+            <div style="margin-top: 40px; color: #444; font-style: italic;">
+               
+            </div>
+
+            <div class="print-only" style="margin-top: 30px; font-size: 30px; color: white;">
+                رقم الشهادة: <span id="printCertNumber"></span>
+            </div>
+        </div>
+
+        <div class="certificate-actions">
+            <button onclick="printCertificate()" class="btn-print">
+                <i class="fas fa-print"></i> طباعة الشهادة
+            </button>
+            <button onclick="backToLogin()" class="btn-secondary">
+                <i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ============ بيانات الدورة الشاملة من PDF ============
+const lessons = [
+    "مقدمة في الحساب الذهني وأهميته",
+    "جدول الضرب في 9 باستخدام الأصابع",
+    "المضاعفات والتضعيف",
+    "التنصيف وعكس التضعيف", 
+    "الضرب في 5",
+    "الضرب في 11",
+    "الضرب في 12",
+    "الضرب في 21",
+    "الضرب في 32",
+    "التأكد من الإجابات ومجموع المنزلة",
+    "تمارين المضاعفات",
+    "تمارين التنصيف",
+    "تمارين الضرب في 11",
+    "تمارين الضرب في 12",
+    "تمارين الضرب في 21",
+    "تمارين الضرب في 32",
+    "أنماط الأرقام والجداول",
+    "قابلية القسمة - المقدمة",
+    "القسمة على 2 و 5 و 10",
+    "القسمة على 3 و 9",
+    "القسمة على 4 و 8", 
+    "القسمة على 6",
+    "القسمة على 11",
+    "القسمة على 7",
+    "تمارين قابلية القسمة",
+    "الاختبارات الشاملة",
+    "التطبيقات العملية",
+    "المراجعة النهائية"
+];
+
+// محتوى كامل لكل درس من المحتوى الأصلي
+const lessonContent = [
+    {
+        title: "مقدمة في الحساب الذهني وأهميته",
+        description: "تعرف على أهمية الحساب الذهني وتنمية المهارات الحسابية",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🎯 أهمية الحساب الذهني</h3>
+                    <p>الحساب الذهني السريع ينبثق من معرفة الضرب والجمع بشكل متقن. العمل الحسابي بثقة وسرعة يحتاج إلى إتقان الأساسيات.</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>💪 المهارات الأساسية</h4>
+                    <p>لإتقان الحساب الذهني يجب:</p>
+                    <ul>
+                        <li>معرفة جداول الضرب بشكل ممتاز</li>
+                        <li>فهم تقنيات الجمع والطرح الذهني</li>
+                        <li>إتقان المضاعفات والتنصيف</li>
+                        <li>تعلم الحيل الذهنية للضرب</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h4>📚 جداول مرجعية</h4>
+                    <p>هناك نماذج في جداول الضرب تساعدنا على عمل الضرب خارج الجدول العادي، خاصة جدول الضرب في 9.</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "ما هي الفائدة الرئيسية من تعلم الحساب الذهني؟", answer: 1, type: "text", hint: "فكر في السرعة والدقة في العمليات الحسابية" },
+            { question: "اذكر مهارتين أساسيتين للحساب الذهني", answer: 1, type: "text", hint: "مثل معرفة جداول الضرب وتقنيات الجمع" }
+        ]
+    },
+    {
+        title: "جدول الضرب في 9 باستخدام الأصابع",
+        description: "طريقة سريعة لمراجعة جدول الضرب في 9 مستعملاً الأصابع",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🖐️ طريقة الأصابع لجدول 9</h3>
+                    <p>لعمل ضرب أي رقم من 1 إلى 10 في 9 باستخدام الأصابع:</p>
+                    <ol>
+                        <li>انظر إلى الرقم الذي يضرب في 9 وموقعه على الأصابع</li>
+                        <li>عدد الأصابع على يسار الرقم يكون في منزلة العشرات</li>
+                        <li>عدد الأصابع على يمين الرقم يكون في منزلة الآحاد</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 7 × 9</h4>
+                    <p>• هناك 6 أصابع على يسار الرقم 7</p>
+                    <p>• هناك 3 أصابع على يمين الرقم 7</p>
+                    <p>• الناتج: <strong>63</strong></p>
+                </div>
+
+                <div class="finger-method">
+                    <div class="finger">1</div>
+                    <div class="finger">2</div>
+                    <div class="finger">3</div>
+                    <div class="finger">4</div>
+                    <div class="finger">5</div>
+                    <div class="finger">6</div>
+                    <div class="finger" style="background: #ff6b6b;">7</div>
+                    <div class="finger">8</div>
+                    <div class="finger">9</div>
+                    <div class="finger">10</div>
+                </div>
+
+                <div class="technique-box">
+                    <h4>📊 جدول الضرب في 9</h4>
+                    <p>9 × 1 = 9<br>9 × 2 = 18<br>9 × 3 = 27<br>9 × 4 = 36<br>9 × 5 = 45<br>9 × 6 = 54<br>9 × 7 = 63<br>9 × 8 = 72<br>9 × 9 = 81<br>9 × 10 = 90</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "8 × 9 = ?", answer: 72, hint: "استخدم طريقة الأصابع: 7 أصابع على اليسار، 2 على اليمين" },
+            { question: "4 × 9 = ?", answer: 36, hint: "3 أصابع على اليسار، 6 على اليمين" },
+            { question: "6 × 9 = ?", answer: 54, hint: "5 أصابع على اليسار، 4 على اليمين" }
+        ]
+    },
+    {
+        title: "المضاعفات والتضعيف",
+        description: "تعلم المضاعفات وكيفية تضعيف الأعداد الكبيرة",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🔢 المضاعفات والتضعيف</h3>
+                    <p>المضاعفات مهمة وتساعدنا في إيجاد ضرب أي عدد بالرقم 2.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال على المضاعفات</h4>
+                    <p>ابدأ بـ 3 وضعف في كل مرة:</p>
+                    <p>3 ← 6 ← 12 ← 24 ← 48 ← 96 ← 192 ← 384 ← 768 ← 1536 ← 3072</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 طريقة تضعيف الأعداد الكبيرة</h4>
+                    <p>لضاعف أي رقم كبير:</p>
+                    <ol>
+                        <li>ابدأ من نهاية يسار الرقم وضاعف المنزلة الأولى</li>
+                        <li>انظر إلى المنزلة التي تليه</li>
+                        <li>إذا كانت المنزلة أكثر من 4 أضف واحد</li>
+                        <li>إذا كانت غير ذلك لا تضيف</li>
+                        <li>استمر بالمضاعفة لكل الأرقام بنفس الطريقة</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: ضاعف 34793</h4>
+                    <p>• ضعف 3 هو 6 (الرقم التالي 4 أقل من 5 لا تضيف) ← 6</p>
+                    <p>• ضعف 4 هو 8 (الرقم التالي 7 أكثر من 5 أضف واحد) ← 9</p>
+                    <p>• ضعف 7 هو 14 (الرقم التالي 9 أكثر من 5 أضف واحد) ← 5</p>
+                    <p>• ضعف 9 هو 18 (الرقم التالي 3 أقل من 5 لا تضيف) ← 8</p>
+                    <p>• ضعف 3 هو 6 ← 6</p>
+                    <p>• الناتج: <strong>69586</strong></p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "ضعف 4682 = ?", answer: 9364, hint: "اتبع طريقة تضعيف الأعداد الكبيرة" },
+            { question: "ضعف 12345 = ?", answer: 24690, hint: "2←4←6←9←0" },
+            { question: "ما هي الأربعة مضاعفات التالية لـ 8؟", answer: 1, type: "text", hint: "16, 32, 64, 128" }
+        ]
+    },
+    {
+        title: "التنصيف وعكس التضعيف",
+        description: "تعلم التنصيف كعملية معاكسة للتضعيف",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ التنصيف</h3>
+                    <p>عكس التضعيف هو التنصيف. التنصيف يعني إيجاد نصف العدد.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>أمثلة على التنصيف</h4>
+                    <p>• نصف 4682 = 2341</p>
+                    <p>• نصف 8484 = 4242</p>
+                    <p>• نصف 7528 = 3764</p>
+                    <p>• نصف 603638 = 301819</p>
+                    <p>• نصف 20304050 = 10152025</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 طريقة التنصيف الذهني</h4>
+                    <p>لإيجاد نصف أي عدد:</p>
+                    <ol>
+                        <li>اقسم كل منزلة على 2</li>
+                        <li>إذا كان الرقم فردي، انقل 5 للمنزلة التي تليه</li>
+                        <li>استمر حتى نهاية العدد</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 ملاحظة مهمة</h4>
+                    <p>التنصيف مفيد في:</p>
+                    <ul>
+                        <li>الضرب في 5 (نصف الضرب في 10)</li>
+                        <li>القسمة على 2</li>
+                        <li>حل مسائل التناسب</li>
+                    </ul>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "نصف 9642 = ?", answer: 4821, hint: "اقسم كل منزلة على 2" },
+            { question: "نصف 1357 = ?", answer: 678.5, hint: "الأعداد الفردية تعطي كسور" },
+            { question: "نصف 24680 = ?", answer: 12340, hint: "كل منزلة ÷ 2" }
+        ]
+    },
+    {
+        title: "الضرب في 5",
+        description: "تقنيات الضرب في 5 باستخدام التنصيف",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>5️⃣ الضرب في 5</h3>
+                    <p>الضرب في 5 = الضرب في 10 ثم التنصيف</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 الطريقة الذكية للضرب في 5</h4>
+                    <p>• إذا كان الرقم زوجي: انصف الرقم ثم أضف صفراً</p>
+                    <p>• إذا كان الرقم فردي: انصف الرقم ثم أضف 5</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 1369 × 5</h4>
+                    <p>• نصف 1369 = 684.5</p>
+                    <p>• الرقم 1369 فردي لذلك أضف 5 ← <strong>6845</strong></p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 248 × 5</h4>
+                    <p>• نصف 248 = 124</p>
+                    <p>• الرقم 248 زوجي لذلك أضف صفراً ← <strong>1240</strong></p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 لماذا هذه الطريقة؟</h4>
+                    <p>لأن 5 = 10 ÷ 2، لذلك:</p>
+                    <p>أ × 5 = أ × 10 ÷ 2</p>
+                    <p>وهذا يعني: اضرب في 10 ثم انصف</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "28 × 5 = ?", answer: 140, hint: "28 زوجي: نصف 28 = 14، أضف صفراً" },
+            { question: "37 × 5 = ?", answer: 185, hint: "37 فردي: نصف 37 = 18.5، أضف 5" },
+            { question: "146 × 5 = ?", answer: 730, hint: "146 زوجي: نصف 146 = 73، أضف صفراً" }
+        ]
+    },
+    {
+        title: "الضرب في 11",
+        description: "طرق ذكية للضرب في 11",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>1️⃣1️⃣ الضرب في 11</h3>
+                    <p>11 = 1 + 10، لذلك: 11 × □ = 1 × □ + 10 × □</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 الطريقة الذكية للضرب في 11</h4>
+                    <p>لأعداد من خانتين:</p>
+                    <ol>
+                        <li>افصل الرقمين</li>
+                        <li>أضف مجموعهما في المنتصف</li>
+                        <li>إذا كان المجموع أكثر من 9، احمل الواحد</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 35 × 11</h4>
+                    <p>• 3 ... 5</p>
+                    <p>• 3 + 5 = 8</p>
+                    <p>• الناتج: <strong>385</strong></p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 57 × 11</h4>
+                    <p>• 5 ... 7</p>
+                    <p>• 5 + 7 = 12 (احمل 1)</p>
+                    <p>• الناتج: <strong>627</strong></p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🔢 طريقة أخرى للأعداد الكبيرة</h4>
+                    <p>لضرب أي عدد في 11:</p>
+                    <ol>
+                        <li>اكتب أول منزلة من اليمين</li>
+                        <li>اجمع كل منزلتين متتاليتين من اليمين</li>
+                        <li>اكتب آخر منزلة من اليسار</li>
+                        <li>تذكر حمل الواحد عندما يكون المجموع أكثر من 9</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 2643 × 11</h4>
+                    <p>• أول منزلة من اليمين: 3 ← 3</p>
+                    <p>• 3 + 4 = 7 ← 73</p>
+                    <p>• 4 + 6 = 10 ← 073 (احمل 1)</p>
+                    <p>• 6 + 2 + 1 = 9 ← 9073</p>
+                    <p>• آخر منزلة: 2 ← 29073</p>
+                    <p>• الناتج: <strong>29073</strong></p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "23 × 11 = ?", answer: 253, hint: "2...3, 2+3=5 ← 253" },
+            { question: "48 × 11 = ?", answer: 528, hint: "4...8, 4+8=12 ← 528 (احمل 1)" },
+            { question: "123 × 11 = ?", answer: 1353, hint: "1...2...3, 1+2=3, 2+3=5 ← 1353" }
+        ]
+    },
+    {
+        title: "الضرب في 12",
+        description: "تقنيات الضرب في 12 باستخدام الضرب في 10 و 2",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>1️⃣2️⃣ الضرب في 12</h3>
+                    <p>12 = 10 + 2، لذلك: 12 × □ = 10 × □ + 2 × □</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 الطريقة الذكية للضرب في 12</h4>
+                    <p>لضرب أي عدد في 12:</p>
+                    <ol>
+                        <li>اضرب العدد في 10</li>
+                        <li>اضرب العدد في 2</li>
+                        <li>اجمع النتيجتين</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 34 × 12</h4>
+                    <p>• 34 × 10 = 340</p>
+                    <p>• 34 × 2 = 68</p>
+                    <p>• 340 + 68 = <strong>408</strong></p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 78 × 12</h4>
+                    <p>• 78 × 10 = 780</p>
+                    <p>• 78 × 2 = 156</p>
+                    <p>• 780 + 156 = <strong>936</strong></p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 طريقة سريعة</h4>
+                    <p>يمكن استخدام طريقة: (العدد × 10) + (العدد + العدد)</p>
+                    <p>مثال: 25 × 12 = 250 + 50 = 300</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "15 × 12 = ?", answer: 180, hint: "15×10=150, 15×2=30, 150+30=180" },
+            { question: "42 × 12 = ?", answer: 504, hint: "42×10=420, 42×2=84, 420+84=504" },
+            { question: "67 × 12 = ?", answer: 804, hint: "67×10=670, 67×2=134, 670+134=804" }
+        ]
+    },
+    {
+        title: "الضرب في 21",
+        description: "تقنيات الضرب في 21 باستخدام الضرب في 20 و 1",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>2️⃣1️⃣ الضرب في 21</h3>
+                    <p>21 = 20 + 1، لذلك: 21 × □ = 20 × □ + 1 × □</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 الطريقة الذكية للضرب في 21</h4>
+                    <p>لضرب أي عدد في 21:</p>
+                    <ol>
+                        <li>اضرب العدد في 20 (ضعف العدد ثم أضف صفراً)</li>
+                        <li>أضف العدد نفسه للناتج</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 32 × 21</h4>
+                    <p>• 32 × 20 = 640</p>
+                    <p>• 640 + 32 = <strong>672</strong></p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 45 × 21</h4>
+                    <p>• 45 × 20 = 900</p>
+                    <p>• 900 + 45 = <strong>945</strong></p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 طريقة بديلة</h4>
+                    <p>21 × □ = □ × 20 + □</p>
+                    <p>أو: (العدد × 2) ثم أضف صفراً ثم أضف □</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "23 × 21 = ?", answer: 483, hint: "23×20=460, 460+23=483" },
+            { question: "56 × 21 = ?", answer: 1176, hint: "56×20=1120, 1120+56=1176" },
+            { question: "89 × 21 = ?", answer: 1869, hint: "89×20=1780, 1780+89=1869" }
+        ]
+    },
+    {
+        title: "الضرب في 32",
+        description: "تقنيات الضرب في 32 باستخدام المضاعفات",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>3️⃣2️⃣ الضرب في 32</h3>
+                    <p>32 = 30 + 2، لذلك: 32 × □ = 30 × □ + 2 × □</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 الطريقة الذكية للضرب في 32</h4>
+                    <p>لضرب أي عدد في 32:</p>
+                    <ol>
+                        <li>اضرب العدد في 30 (العدد × 3 ثم أضف صفراً)</li>
+                        <li>اضرب العدد في 2</li>
+                        <li>اجمع النتيجتين</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 25 × 32</h4>
+                    <p>• 25 × 30 = 750</p>
+                    <p>• 25 × 2 = 50</p>
+                    <p>• 750 + 50 = <strong>800</strong></p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 38 × 32</h4>
+                    <p>• 38 × 30 = 1140</p>
+                    <p>• 38 × 2 = 76</p>
+                    <p>• 1140 + 76 = <strong>1216</strong></p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 استخدام المضاعفات</h4>
+                    <p>32 = 2 × 2 × 2 × 2 × 2</p>
+                    <p>يمكنك مضاعفة العدد 5 مرات للحصول على الناتج</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "17 × 32 = ?", answer: 544, hint: "17×30=510, 17×2=34, 510+34=544" },
+            { question: "43 × 32 = ?", answer: 1376, hint: "43×30=1290, 43×2=86, 1290+86=1376" },
+            { question: "76 × 32 = ?", answer: 2432, hint: "76×30=2280, 76×2=152, 2280+152=2432" }
+        ]
+    },
+    {
+        title: "التأكد من الإجابات ومجموع المنزلة",
+        description: "طرق للتحقق من صحة الإجابات باستخدام مجموع المنزلة",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>✅ التأكد من الإجابات</h3>
+                    <p>مجموع المنزلة (Digital Root) يساعد في التحقق من صحة العمليات الحسابية.</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 طريقة مجموع المنزلة</h4>
+                    <p>لإيجاد مجموع منزلة أي عدد:</p>
+                    <ol>
+                        <li>اجمع كل أرقام العدد</li>
+                        <li>إذا كان الناتج أكثر من 9، اجمع أرقامه مرة أخرى</li>
+                        <li>استمر حتى تحصل على رقم واحد من 1 إلى 9</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 3478</h4>
+                    <p>• 3 + 4 + 7 + 8 = 22</p>
+                    <p>• 2 + 2 = <strong>4</strong></p>
+                    <p>• مجموع المنزلة = 4</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>📐 قاعدة الضرب</h4>
+                    <p>مجموع منزلة (أ × ب) = مجموع منزلة (مجموع منزلة أ × مجموع منزلة ب)</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 23 × 45 = 1035</h4>
+                    <p>• مجموع منزلة 23 = 2+3=5</p>
+                    <p>• مجموع منزلة 45 = 4+5=9</p>
+                    <p>• 5 × 9 = 45 ← 4+5=9</p>
+                    <p>• مجموع منزلة 1035 = 1+0+3+5=9</p>
+                    <p>• الإجابة صحيحة ✓</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "ما هو مجموع منزلة 4682؟", answer: 2, hint: "4+6+8+2=20, 2+0=2" },
+            { question: "ما هو مجموع منزلة 12345؟", answer: 6, hint: "1+2+3+4+5=15, 1+5=6" },
+            { question: "تحقق من 34×56=1904 باستخدام مجموع المنزلة", answer: 1, type: "yesno", hint: "مجموع 34=7, مجموع 56=2, 7×2=14=5, مجموع 1904=5" }
+        ]
+    },
+    {
+        title: "تمارين المضاعفات",
+        description: "تمارين تطبيقية على المضاعفات والتضعيف",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>💪 تمارين المضاعفات</h3>
+                    <p>تدرب على تضعيف الأعداد باستخدام الطريقة الذكية.</p>
+                </div>
+
+                <div class="exercise-box">
+                    <h3>🔄 سلسلة المضاعفات</h3>
+                    <p>ابدأ من 7 وضعف 8 مرات:</p>
+                    <p>7 → 14 → 28 → 56 → 112 → 224 → 448 → 896 → 1792</p>
+                </div>
+
+                <div class="quick-tips">
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>ضعف 0 = 0</p>
+                        <p>ضعف 1 = 2</p>
+                        <p>ضعف 2 = 4</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>ضعف 3 = 6</p>
+                        <p>ضعف 4 = 8</p>
+                        <p>ضعف 5 = 10</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>ضعف 6 = 12</p>
+                        <p>ضعف 7 = 14</p>
+                        <p>ضعف 8 = 16</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>ضعف 9 = 18</p>
+                        <p>ضعف 10 = 20</p>
+                    </div>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "ضعف 2468 = ?", answer: 4936, hint: "2←4←9←3←6" },
+            { question: "ضعف 13579 = ?", answer: 27158, hint: "1←2←7←1←5←8" },
+            { question: "ضعف 9876 = ?", answer: 19752, hint: "9←1←9←7←5←2" }
+        ]
+    },
+    {
+        title: "تمارين التنصيف",
+        description: "تمارين تطبيقية على التنصيف",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ تمارين التنصيف</h3>
+                    <p>تدرب على إيجاد نصف الأعداد المختلفة.</p>
+                </div>
+
+                <div class="exercise-box">
+                    <h3>📝 تمارين متنوعة</h3>
+                    <p>حاول حل هذه التمارين ذهنياً:</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 نصائح للتنصيف</h4>
+                    <ul>
+                        <li>الأعداد الزوجية تعطي أعداد صحيحة</li>
+                        <li>الأعداد الفردية تعطي كسور عشرية</li>
+                        <li>يمكن كتابة النصف ككسر: ½</li>
+                    </ul>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "نصف 8642 = ?", answer: 4321, hint: "اقسم كل منزلة على 2" },
+            { question: "نصف 9753 = ?", answer: 4876.5, hint: "عدد فردي يعطي كسر" },
+            { question: "نصف 20406 = ?", answer: 10203, hint: "2←1←0←2←0←3" }
+        ]
+    },
+    {
+        title: "تمارين الضرب في 11",
+        description: "تمارين تطبيقية على الضرب في 11",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>1️⃣1️⃣ تمارين الضرب في 11</h3>
+                    <p>طبق طريقة الضرب في 11 على هذه التمارين.</p>
+                </div>
+
+                <div class="quick-tips">
+                    <div class="quick-tip">
+                        <h4>أعداد من خانتين</h4>
+                        <p>23 × 11 = 253</p>
+                        <p>47 × 11 = 517</p>
+                        <p>89 × 11 = 979</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>أعداد من 3 خانات</h4>
+                        <p>123 × 11 = 1353</p>
+                        <p>456 × 11 = 5016</p>
+                        <p>789 × 11 = 8679</p>
+                    </div>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "34 × 11 = ?", answer: 374, hint: "3...4, 3+4=7 ← 374" },
+            { question: "67 × 11 = ?", answer: 737, hint: "6...7, 6+7=13 ← 737 (احمل 1)" },
+            { question: "258 × 11 = ?", answer: 2838, hint: "2...5...8, 2+5=7, 5+8=13 ← 2838" }
+        ]
+    },
+    {
+        title: "تمارين الضرب في 12",
+        description: "تمارين تطبيقية على الضرب في 12",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>1️⃣2️⃣ تمارين الضرب في 12</h3>
+                    <p>استخدم طريقة: (العدد × 10) + (العدد × 2)</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 تذكر القاعدة</h4>
+                    <p>12 × □ = (□ × 10) + (□ × 2)</p>
+                    <p>أو: 12 × □ = □ × 10 + □ + □</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "18 × 12 = ?", answer: 216, hint: "18×10=180, 18×2=36, 180+36=216" },
+            { question: "35 × 12 = ?", answer: 420, hint: "35×10=350, 35×2=70, 350+70=420" },
+            { question: "92 × 12 = ?", answer: 1104, hint: "92×10=920, 92×2=184, 920+184=1104" }
+        ]
+    },
+    {
+        title: "تمارين الضرب في 21",
+        description: "تمارين تطبيقية على الضرب في 21",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>2️⃣1️⃣ تمارين الضرب في 21</h3>
+                    <p>استخدم طريقة: (العدد × 20) + العدد</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 تذكر القاعدة</h4>
+                    <p>21 × □ = (□ × 20) + □</p>
+                    <p>أو: 21 × □ = (□ × 2) ثم أضف صفراً ثم أضف □</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "14 × 21 = ?", answer: 294, hint: "14×20=280, 280+14=294" },
+            { question: "27 × 21 = ?", answer: 567, hint: "27×20=540, 540+27=567" },
+            { question: "63 × 21 = ?", answer: 1323, hint: "63×20=1260, 1260+63=1323" }
+        ]
+    },
+    {
+        title: "تمارين الضرب في 32",
+        description: "تمارين تطبيقية على الضرب في 32",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>3️⃣2️⃣ تمارين الضرب في 32</h3>
+                    <p>استخدم طريقة: (العدد × 30) + (العدد × 2)</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 تذكر القاعدة</h4>
+                    <p>32 × □ = (□ × 30) + (□ × 2)</p>
+                    <p>أو: 32 × □ = (□ × 3) ثم أضف صفراً ثم أضف (□ × 2)</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "15 × 32 = ?", answer: 480, hint: "15×30=450, 15×2=30, 450+30=480" },
+            { question: "28 × 32 = ?", answer: 896, hint: "28×30=840, 28×2=56, 840+56=896" },
+            { question: "41 × 32 = ?", answer: 1312, hint: "41×30=1230, 41×2=82, 1230+82=1312" }
+        ]
+    },
+    {
+        title: "أنماط الأرقام والجداول",
+        description: "اكتشاف الأنماط في جداول الضرب والأرقام",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🔍 أنماط الأرقام</h3>
+                    <p>اكتشاف الأنماط يساعد في حفظ الجداول وتوقع النتائج.</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 أنماط جدول الضرب في 9</h4>
+                    <p>• الآحاد: 9, 8, 7, 6, 5, 4, 3, 2, 1, 0</p>
+                    <p>• العشرات: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</p>
+                    <p>• مجموع الرقمين دائماً = 9</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🎯 أنماط جدول الضرب في 5</h4>
+                    <p>• ينتهي بـ 0 أو 5 بالتناوب</p>
+                    <p>• كل نتيجة تزيد بمقدار 5</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>نمط مثير للاهتمام</h4>
+                    <p>1 × 9 = 09</p>
+                    <p>2 × 9 = 18</p>
+                    <p>3 × 9 = 27</p>
+                    <p>4 × 9 = 36</p>
+                    <p>5 × 9 = 45</p>
+                    <p>6 × 9 = 54</p>
+                    <p>7 × 9 = 63</p>
+                    <p>8 × 9 = 72</p>
+                    <p>9 × 9 = 81</p>
+                    <p>10 × 9 = 90</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "ما هو النمط في جدول الضرب في 11؟", answer: 1, type: "text", hint: "لأعداد من خانتين: الرقم الأول، مجموع الرقمين، الرقم الثاني" },
+            { question: "ما هو الرقم التالي في النمط: 2, 4, 8, 16, 32, ?", answer: 64, hint: "هذا نمط المضاعفات" },
+            { question: "ما هو مجموع أرقام أي نتيجة في جدول الضرب في 9؟", answer: 9, hint: "مثال: 18=1+8=9, 27=2+7=9" }
+        ]
+    },
+    {
+        title: "قابلية القسمة - المقدمة",
+        description: "مقدمة في قابلية القسمة واختباراتها",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🔍 قابلية القسمة</h3>
+                    <p>الرقم يكون عاملاً لعدد آخر إذا كان يقسمه بالضبط (بدون باقي).</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>➗ القسمة على 2</h4>
+                    <p>العدد يقبل القسمة على 2 إذا كان آحاده 0, 2, 4, 6, 8</p>
+                    <p>مثال: 346 ← يقبل القسمة على 2 لأن آحاده 6</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>➗ القسمة على 5</h4>
+                    <p>العدد يقبل القسمة على 5 إذا كان آحاده 0 أو 5</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>➗ القسمة على 10</h4>
+                    <p>العدد يقبل القسمة على 10 إذا كان آحاده 0</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 أمثلة عملية</h4>
+                    <p>• 7308 ← يقبل القسمة على 2 (آحاده 8)</p>
+                    <p>• 32220 ← يقبل القسمة على 5 و 10 (آحاده 0)</p>
+                    <p>• 6349 ← لا يقبل القسمة على 2 أو 5 أو 10</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 4682 يقبل القسمة على 2؟", answer: 1, type: "yesno", hint: "انظر إلى الآحاد" },
+            { question: "هل 12345 يقبل القسمة على 5؟", answer: 1, type: "yesno", hint: "انظر إذا كان الآحاد 0 أو 5" },
+            { question: "هل 24680 يقبل القسمة على 10؟", answer: 1, type: "yesno", hint: "يجب أن يكون الآحاد 0" }
+        ]
+    },
+    {
+        title: "القسمة على 2 و 5 و 10",
+        description: "اختبارات القسمة على 2 و 5 و 10",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ القسمة على 2 و 5 و 10</h3>
+                    <p>هذه أسهل اختبارات القسمة لأنها تعتمد على رقم الآحاد فقط.</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>2️⃣ القسمة على 2</h4>
+                    <p>العدد الزوجي يقبل القسمة على 2</p>
+                    <p>الأعداد الزوجية: 0, 2, 4, 6, 8 في منزلة الآحاد</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>5️⃣ القسمة على 5</h4>
+                    <p>العدد يقبل القسمة على 5 إذا كان آحاده 0 أو 5</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>🔟 القسمة على 10</h4>
+                    <p>العدد يقبل القسمة على 10 إذا كان آحاده 0</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>💡 أمثلة شاملة</h4>
+                    <p>• 124 ← يقبل القسمة على 2 فقط</p>
+                    <p>• 125 ← يقبل القسمة على 5 فقط</p>
+                    <p>• 120 ← يقبل القسمة على 2 و 5 و 10</p>
+                    <p>• 123 ← لا يقبل القسمة على أي منها</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 357 يقبل القسمة على 2؟", answer: 0, type: "yesno", hint: "آحاده 7 (فردي)" },
+            { question: "هل 480 يقبل القسمة على 5؟", answer: 1, type: "yesno", hint: "آحاده 0" },
+            { question: "هل 975 يقبل القسمة على 10؟", answer: 0, type: "yesno", hint: "آحاده 5 ليس 0" }
+        ]
+    },
+    {
+        title: "القسمة على 3 و 9",
+        description: "اختبارات القسمة على 3 و 9 باستخدام مجموع الأرقام",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ القسمة على 3 و 9</h3>
+                    <p>تعتمد على مجموع أرقام العدد.</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>3️⃣ القسمة على 3</h4>
+                    <p>العدد يقبل القسمة على 3 إذا كان مجموع أرقامه يقبل القسمة على 3</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>9️⃣ القسمة على 9</h4>
+                    <p>العدد يقبل القسمة على 9 إذا كان مجموع أرقامه يقبل القسمة على 9</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 123</h4>
+                    <p>• 1 + 2 + 3 = 6</p>
+                    <p>• 6 ÷ 3 = 2 ← يقبل القسمة على 3</p>
+                    <p>• 6 ÷ 9 = 0.666 ← لا يقبل القسمة على 9</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 468</h4>
+                    <p>• 4 + 6 + 8 = 18</p>
+                    <p>• 18 ÷ 3 = 6 ← يقبل القسمة على 3</p>
+                    <p>• 18 ÷ 9 = 2 ← يقبل القسمة على 9</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 246 يقبل القسمة على 3؟", answer: 1, type: "yesno", hint: "2+4+6=12, 12÷3=4" },
+            { question: "هل 729 يقبل القسمة على 9؟", answer: 1, type: "yesno", hint: "7+2+9=18, 18÷9=2" },
+            { question: "هل 357 يقبل القسمة على 3؟", answer: 1, type: "yesno", hint: "3+5+7=15, 15÷3=5" }
+        ]
+    },
+    {
+        title: "القسمة على 4 و 8",
+        description: "اختبارات القسمة على 4 و 8 باستخدام الأرقام الأخيرة",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ القسمة على 4 و 8</h3>
+                    <p>تعتمد على الأرقام الأخيرة من العدد.</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>4️⃣ القسمة على 4</h4>
+                    <p>العدد يقبل القسمة على 4 إذا كان العدد المكون من آخر رقمين يقبل القسمة على 4</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>8️⃣ القسمة على 8</h4>
+                    <p>العدد يقبل القسمة على 8 إذا كان العدد المكون من آخر 3 أرقام يقبل القسمة على 8</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 7324</h4>
+                    <p>• آخر رقمين: 24</p>
+                    <p>• 24 ÷ 4 = 6 ← يقبل القسمة على 4</p>
+                    <p>• آخر 3 أرقام: 324</p>
+                    <p>• 324 ÷ 8 = 40.5 ← لا يقبل القسمة على 8</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 5816</h4>
+                    <p>• آخر رقمين: 16 ← 16÷4=4 ✓</p>
+                    <p>• آخر 3 أرقام: 816 ← 816÷8=102 ✓</p>
+                    <p>• إذن يقبل القسمة على 4 و 8</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 1236 يقبل القسمة على 4؟", answer: 1, type: "yesno", hint: "آخر رقمين 36, 36÷4=9" },
+            { question: "هل 4728 يقبل القسمة على 8؟", answer: 1, type: "yesno", hint: "آخر 3 أرقام 728, 728÷8=91" },
+            { question: "هل 9652 يقبل القسمة على 4؟", answer: 1, type: "yesno", hint: "آخر رقمين 52, 52÷4=13" }
+        ]
+    },
+    {
+        title: "القسمة على 6",
+        description: "اختبار القسمة على 6 باستخدام شروط القسمة على 2 و 3",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ القسمة على 6</h3>
+                    <p>العدد يقبل القسمة على 6 إذا كان يقبل القسمة على 2 و 3 معاً</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>6️⃣ شروط القسمة على 6</h4>
+                    <ol>
+                        <li>أن يكون العدد زوجي (يقبل القسمة على 2)</li>
+                        <li>أن يكون مجموع أرقامه يقبل القسمة على 3</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 234</h4>
+                    <p>• آحاده 4 ← زوجي ✓</p>
+                    <p>• 2+3+4=9 ← 9÷3=3 ✓</p>
+                    <p>• إذن 234 ÷ 6 = 39</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 135</h4>
+                    <p>• آحاده 5 ← فردي ✗</p>
+                    <p>• 1+3+5=9 ← 9÷3=3 ✓</p>
+                    <p>• لا يقبل القسمة على 6 (فشل الشرط الأول)</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 486 يقبل القسمة على 6؟", answer: 1, type: "yesno", hint: "زوجي ومجموع أرقامه 4+8+6=18 يقبل القسمة على 3" },
+            { question: "هل 357 يقبل القسمة على 6؟", answer: 0, type: "yesno", hint: "فردي (لا يقبل القسمة على 2)" },
+            { question: "هل 792 يقبل القسمة على 6؟", answer: 1, type: "yesno", hint: "زوجي ومجموع أرقامه 7+9+2=18 يقبل القسمة على 3" }
+        ]
+    },
+    {
+        title: "القسمة على 11",
+        description: "اختبار القسمة على 11 باستخدام الفرق بين مجموع الأرقام في المراتب الفردية والزوجية",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ القسمة على 11</h3>
+                    <p>العدد يقبل القسمة على 11 إذا كان الفرق بين مجموع الأرقام في المراتب الفردية والزوجية = 0 أو 11 أو مضاعفاتها</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>1️⃣1️⃣ طريقة الاختبار</h4>
+                    <ol>
+                        <li>اجمع الأرقام في المراتب الفردية (من اليمين)</li>
+                        <li>اجمع الأرقام في المراتب الزوجية (من اليمين)</li>
+                        <li>احسب الفرق بين المجموعين</li>
+                        <li>إذا كان الفرق 0 أو 11 أو 22... فإن العدد يقبل القسمة على 11</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 121</h4>
+                    <p>• المراتب الفردية (من اليمين): 1, 1 ← 1+1=2</p>
+                    <p>• المراتب الزوجية: 2 ← 2</p>
+                    <p>• الفرق: 2-2=0 ✓</p>
+                    <p>• إذن 121 ÷ 11 = 11</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 1331</h4>
+                    <p>• الفردية: 1+3=4</p>
+                    <p>• الزوجية: 3+1=4</p>
+                    <p>• الفرق: 4-4=0 ✓</p>
+                    <p>• 1331 ÷ 11 = 121</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 132 يقبل القسمة على 11؟", answer: 1, type: "yesno", hint: "فردية: 2+1=3, زوجية: 3, الفرق: 3-3=0" },
+            { question: "هل 253 يقبل القسمة على 11؟", answer: 1, type: "yesno", hint: "فردية: 3+2=5, زوجية: 5, الفرق: 5-5=0" },
+            { question: "هل 274 يقبل القسمة على 11؟", answer: 0, type: "yesno", hint: "فردية: 4+7=11, زوجية: 2, الفرق: 11-2=9" }
+        ]
+    },
+    {
+        title: "القسمة على 7",
+        description: "اختبار القسمة على 7 باستخدام طريقة خاصة",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>➗ القسمة على 7</h3>
+                    <p>اختبار القسمة على 7 أكثر تعقيداً من الأعداد الأخرى.</p>
+                </div>
+
+                <div class="rule-box">
+                    <h4>7️⃣ طريقة اختبار القسمة على 7</h4>
+                    <ol>
+                        <li>خذ آخر رقم في العدد وضاعفه</li>
+                        <li>اطرح الناتج من العدد المتبقي (بدون آخر رقم)</li>
+                        <li>كرر الخطوات إذا لزم الأمر</li>
+                        <li>إذا كان الناتج النهائي 0 أو 7 أو مضاعفاتها، فإن العدد يقبل القسمة على 7</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 203</h4>
+                    <p>• آخر رقم: 3 ← 3×2=6</p>
+                    <p>• العدد المتبقي: 20 ← 20-6=14</p>
+                    <p>• 14 ÷ 7 = 2 ✓</p>
+                    <p>• إذن 203 ÷ 7 = 29</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>مثال: 196</h4>
+                    <p>• آخر رقم: 6 ← 6×2=12</p>
+                    <p>• العدد المتبقي: 19 ← 19-12=7</p>
+                    <p>• 7 ÷ 7 = 1 ✓</p>
+                    <p>• 196 ÷ 7 = 28</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "هل 84 يقبل القسمة على 7؟", answer: 1, type: "yesno", hint: "4×2=8, 8-8=0 ✓" },
+            { question: "هل 105 يقبل القسمة على 7؟", answer: 1, type: "yesno", hint: "5×2=10, 10-10=0 ✓" },
+            { question: "هل 142 يقبل القسمة على 7؟", answer: 0, type: "yesno", hint: "2×2=4, 14-4=10, 10÷7≠عدد صحيح" }
+        ]
+    },
+    {
+        title: "تمارين قابلية القسمة",
+        description: "تمارين شاملة على جميع اختبارات القسمة",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🎯 تمارين قابلية القسمة</h3>
+                    <p>طبق كل ما تعلمته عن اختبارات القسمة.</p>
+                </div>
+
+                <div class="quick-tips">
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>2: آحاده زوجي</p>
+                        <p>3: مجموع أرقامه ÷ 3</p>
+                        <p>4: آخر رقمين ÷ 4</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>5: آحاده 0 أو 5</p>
+                        <p>6: يقبل 2 و 3</p>
+                        <p>8: آخر 3 أرقام ÷ 8</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>تذكر!</h4>
+                        <p>9: مجموع أرقامه ÷ 9</p>
+                        <p>10: آحاده 0</p>
+                        <p>11: فرق المجاميع = 0 أو 11</p>
+                    </div>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "أي هذه الأعداد يقبل القسمة على 3؟ 47, 63, 82", answer: 63, hint: "6+3=9, 9÷3=3" },
+            { question: "أي هذه الأعداد يقبل القسمة على 6？ 72, 85, 93", answer: 72, hint: "زوجي ومجموع أرقامه 7+2=9 يقبل القسمة على 3" },
+            { question: "أي هذه الأعداد يقبل القسمة على 4 و 8？ 248, 372, 516", answer: 248, hint: "48÷4=12, 248÷8=31" }
+        ]
+    },
+    {
+        title: "الاختبارات الشاملة",
+        description: "اختبارات شاملة تغطي جميع الدروس",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>📝 الاختبارات الشاملة</h3>
+                    <p>اختبر نفسك في جميع مواضيع الحساب الذهني.</p>
+                </div>
+
+                <div class="exercise-box">
+                    <h3>🎯 اختبار شامل</h3>
+                    <p>حاول حل هذه الأسئلة خلال 5 دقائق:</p>
+                </div>
+
+                <div class="tip-box">
+                    <h4>💡 نصائح للاختبار</h4>
+                    <ul>
+                        <li>اقرأ السؤال بعناية</li>
+                        <li>استخدم الطرق الذكية التي تعلمتها</li>
+                        <li>تحقق من إجاباتك إذا كان هناك وقت</li>
+                    </ul>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "47 × 11 = ?", answer: 517, hint: "4...7, 4+7=11 ← 517 (احمل 1)" },
+            { question: "نصف 9684 = ?", answer: 4842, hint: "اقسم كل منزلة على 2" },
+            { question: "هل 792 يقبل القسمة على 6؟", answer: 1, type: "yesno", hint: "زوجي ومجموع أرقامه 7+9+2=18 يقبل القسمة على 3" }
+        ]
+    },
+    {
+        title: "التطبيقات العملية",
+        description: "تطبيقات عملية للحساب الذهني في الحياة اليومية",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>🏪 التطبيقات العملية</h3>
+                    <p>الحساب الذهني مفيد في العديد من المواقف اليومية.</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🛒 التسوق</h4>
+                    <p>• حساب الخصومات: خصم 20% من 250 = 250 - 50 = 200</p>
+                    <p>• حساب الفواتير: 3 عناصر بسعر 45 = 3 × 45 = 135</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>⏱️ الوقت والمسافة</h4>
+                    <p>• حساب الوقت: 45 دقيقة × 3 = 2 ساعة و 15 دقيقة</p>
+                    <p>• حساب السرعة: 60 كم/ساعة لمدة 45 دقيقة = 45 كم</p>
+                </div>
+
+                <div class="technique-box">
+                    <h4>🍳 الطهي والقياسات</h4>
+                    <p>• تكبير الوصفات: ⅔ كوب × 3 = 2 كوب</p>
+                    <p>• تحويل الوحدات: 1.5 لتر = 1500 مل</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "إذا كان سعر المنتج 80 ريال وله خصم 25%، فما هو السعر بعد الخصم؟", answer: 60, hint: "25% من 80 = 20, 80-20=60" },
+            { question: "إذا استغرقت الرحلة 45 دقيقة بالسيارة، فكم تستغرق 3 رحلات؟", answer: 135, hint: "45 × 3 = 135 دقيقة = ساعتين و 15 دقيقة" },
+            { question: "إذا اشتريت 4 كتب بسعر 35 ريال لكل كتاب، فما هو المبلغ الإجمالي؟", answer: 140, hint: "4 × 35 = 140" }
+        ]
+    },
+    {
+        title: "المراجعة النهائية",
+        description: "مراجعة شاملة لكل ما تعلمته في الدورة",
+        content: `
+            <div class="lesson-content">
+                <div class="lesson-section">
+                    <h3>📚 المراجعة النهائية</h3>
+                    <p>راجع أهم النقاط في دورة الحساب الذهني.</p>
+                </div>
+
+                <div class="quick-tips">
+                    <div class="quick-tip">
+                        <h4>الضرب الذكي</h4>
+                        <p>×5: انصف وأضف 0 أو 5</p>
+                        <p>×11: اجمع الرقمين في المنتصف</p>
+                        <p>×12: (×10) + (×2)</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>القسمة</h4>
+                        <p>2: آحاده زوجي</p>
+                        <p>3: مجموع أرقامه ÷ 3</p>
+                        <p>6: يقبل 2 و 3 معاً</p>
+                    </div>
+                    <div class="quick-tip">
+                        <h4>تقنيات أخرى</h4>
+                        <p>المضاعفات: تضعيف الأعداد</p>
+                        <p>التنصيف: نصف العدد</p>
+                        <p>مجموع المنزلة: للتحقق</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>🎉 تهانينا!</h4>
+                    <p>لقد أكملت دورة الحساب الذهني الشاملة. استمر في الممارسة لتطوير مهاراتك.</p>
+                </div>
+            </div>
+        `,
+        exercises: [
+            { question: "ما هي الطريقة الذكية للضرب في 5؟", answer: 1, type: "text", hint: "انصف العدد ثم أضف 0 إذا كان زوجي أو 5 إذا كان فردي" },
+            { question: "كيف تتحقق من قابلية القسمة على 6؟", answer: 1, type: "text", hint: "العدد يجب أن يقبل القسمة على 2 و 3 معاً" },
+            { question: "ما فائدة مجموع المنزلة؟", answer: 1, type: "text", hint: "للتحقق من صحة العمليات الحسابية" }
+        ]
+    }
+];
+
+// ============ نظام التطبيق المحسن ============
+class MathAcademy {
+    constructor() {
+        this.users = this.loadUsers();
+        this.currentUser = null;
+        this.certificateCounter = this.loadCertificateCounter();
+        this.init();
+    }
+
+    loadUsers() {
+        const saved = localStorage.getItem('mathAcademyUsers');
+        if (saved) {
+            return JSON.parse(saved);
+        } else {
+            const defaultUsers = [
+                {id: 1, f: "Admin", l: "User", p: "admin123", admin: true, completed: [], certificateNumber: null},
+                {id: 2, f: "طالب", l: "تجريبي", p: "123", admin: false, completed: [], certificateNumber: null}
+            ];
+            this.saveUsers(defaultUsers);
+            return defaultUsers;
+        }
+    }
+
+    loadCertificateCounter() {
+        const saved = localStorage.getItem('mathAcademyCertificateCounter');
+        return saved ? parseInt(saved) : 1;
+    }
+
+    saveCertificateCounter(counter) {
+        localStorage.setItem('mathAcademyCertificateCounter', counter.toString());
+    }
+
+    saveUsers(users) {
+        localStorage.setItem('mathAcademyUsers', JSON.stringify(users));
+    }
+
+    init() {
+        console.log('تم تحميل التطبيق بنجاح');
+        this.showLoginScreen();
+    }
+
+    showLoginScreen() {
+        this.hideAllScreens();
+        document.getElementById('loginScreen').classList.remove('hidden');
+    }
+
+    hideAllScreens() {
+        ['loginScreen', 'userPage', 'adminPage', 'certificatePage'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
+    }
+
+    login(fName, lName, password) {
+        const user = this.users.find(u => 
+            u.f === fName && u.l === lName && u.p === password
+        );
+        
+        if (user) {
+            this.currentUser = user;
+            if (user.admin) {
+                this.showAdminPage();
+            } else {
+                this.showUserPage();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    showUserPage() {
+        this.hideAllScreens();
+        document.getElementById('userPage').classList.remove('hidden');
+        document.getElementById('username').textContent = `${this.currentUser.f} ${this.currentUser.l}`;
+        this.loadLessons();
+        this.updateProgress();
+    }
+
+    showAdminPage() {
+        this.hideAllScreens();
+        document.getElementById('adminPage').classList.remove('hidden');
+        this.loadUsersList();
+    }
+
+    loadLessons() {
+        const container = document.getElementById('lessonsList');
+        container.innerHTML = '';
+        
+        lessons.forEach((lesson, index) => {
+            const isCompleted = this.currentUser.completed.includes(index);
+            const lessonDiv = document.createElement('div');
+            lessonDiv.className = `lesson ${isCompleted ? 'completed' : ''}`;
+            lessonDiv.innerHTML = `
+                <div class="lesson-icon">${index + 1}</div>
+                <div>
+                    <strong>${lesson}</strong>
+                    <p style="color: #666; margin-top: 5px;">${this.getLessonDescription(index)}</p>
+                </div>
+            `;
+            lessonDiv.onclick = () => this.openLesson(index);
+            container.appendChild(lessonDiv);
+        });
+    }
+
+    getLessonDescription(index) {
+        const descriptions = {
+            0: "تعريف الحساب الذهني وفوائده",
+            1: "طريقة سريعة لجدول الضرب في 9",
+            2: "تعلم المضاعفات والتضعيف",
+            3: "التنصيف كعملية معاكسة للتضعيف",
+            4: "تقنيات الضرب في 5",
+            5: "طرق ذكية للضرب في 11",
+            6: "الضرب في 12",
+            7: "الضرب في 21", 
+            8: "الضرب في 32",
+            9: "التأكد من الإجابات",
+            10: "تمارين المضاعفات",
+            11: "تمارين التنصيف",
+            12: "تمارين الضرب في 11",
+            13: "تمارين الضرب في 12",
+            14: "تمارين الضرب في 21",
+            15: "تمارين الضرب في 32",
+            16: "أنماط الأرقام والجداول",
+            17: "مقدمة في قابلية القسمة",
+            18: "القسمة على 2 و 5 و 10",
+            19: "القسمة على 3 و 9",
+            20: "القسمة على 4 و 8",
+            21: "القسمة على 6",
+            22: "القسمة على 11",
+            23: "القسمة على 7",
+            24: "تمارين قابلية القسمة",
+            25: "الاختبارات الشاملة",
+            26: "التطبيقات العملية",
+            27: "المراجعة النهائية"
+        };
+        return descriptions[index] || "محتوى الدرس";
+    }
+
+    openLesson(index) {
+        const lessonBox = document.getElementById('lessonBox');
+        
+        if (!lessonContent[index]) {
+            lessonBox.innerHTML = `
+                <div class="form-box">
+                    <h3 style="color: var(--primary);">${lessons[index]}</h3>
+                    <p>محتوى هذا الدرس قيد التطوير. سيتم إضافته قريباً.</p>
+                    <button onclick="academy.closeLesson()" class="btn-danger">إغلاق</button>
+                </div>
+            `;
+        } else {
+            let exercisesHTML = "";
+            if (lessonContent[index].exercises) {
+                exercisesHTML = `
+                    <div class="exercise-box">
+                        <h3><i class="fas fa-brain"></i> تمارين تطبيقية</h3>
+                        ${lessonContent[index].exercises.map((ex, i) => `
+                            <div class="exercise-item">
+                                <div class="exercise-formula">${ex.question}</div>
+                                ${ex.type === 'yesno' ? `
+                                    <div>
+                                        <button onclick="academy.checkYesNoExercise(${index}, ${i}, true)" style="width: auto; margin: 5px;">نعم</button>
+                                        <button onclick="academy.checkYesNoExercise(${index}, ${i}, false)" style="width: auto; margin: 5px;">لا</button>
+                                    </div>
+                                ` : ex.type === 'text' ? `
+                                    <input type="text" class="exercise-input" id="ex${index}_${i}" placeholder="اكتب إجابتك" style="width: 300px;">
+                                    <button onclick="academy.checkTextExercise(${index}, ${i})" style="width: auto; margin: 10px auto; padding: 8px 20px;">تحقق</button>
+                                ` : `
+                                    <input type="number" class="exercise-input" id="ex${index}_${i}" placeholder="الإجابة">
+                                    <button onclick="academy.checkExercise(${index}, ${i})" style="width: auto; margin: 10px auto; padding: 8px 20px;">تحقق</button>
+                                `}
+                                <div class="exercise-feedback" id="feedback${index}_${i}"></div>
+                                ${ex.hint ? `<div style="color: #666; font-size: 14px; margin-top: 5px;">💡 ${ex.hint}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            lessonBox.innerHTML = `
+                <div class="form-box">
+                    <h3 style="color: var(--primary);">${lessonContent[index].title}</h3>
+                    ${lessonContent[index].content}
+                    ${exercisesHTML}
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="academy.markCompleted(${index})" class="btn-success" style="width: auto; flex: 1;">
+                            <i class="fas fa-check"></i> تم الإكمال
+                        </button>
+                        <button onclick="academy.closeLesson()" class="btn-danger" style="width: auto; flex: 1;">
+                            <i class="fas fa-times"></i> إغلاق
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        lessonBox.classList.remove('hidden');
+        document.getElementById('lessonsList').classList.add('hidden');
+    }
+
+    checkExercise(lessonIndex, exerciseIndex) {
+        const input = document.getElementById(`ex${lessonIndex}_${exerciseIndex}`);
+        const feedback = document.getElementById(`feedback${lessonIndex}_${exerciseIndex}`);
+        const correctAnswer = lessonContent[lessonIndex].exercises[exerciseIndex].answer;
+        
+        if (parseInt(input.value) === correctAnswer) {
+            feedback.textContent = "إجابة صحيحة! أحسنت! 🎉";
+            feedback.className = "exercise-feedback correct";
+        } else {
+            feedback.textContent = `إجابة خاطئة. حاول مرة أخرى!`;
+            feedback.className = "exercise-feedback incorrect";
+        }
+    }
+
+    checkYesNoExercise(lessonIndex, exerciseIndex, answer) {
+        const feedback = document.getElementById(`feedback${lessonIndex}_${exerciseIndex}`);
+        const correctAnswer = lessonContent[lessonIndex].exercises[exerciseIndex].answer;
+        
+        if (answer === (correctAnswer === 1)) {
+            feedback.textContent = "إجابة صحيحة! أحسنت! 🎉";
+            feedback.className = "exercise-feedback correct";
+        } else {
+            feedback.textContent = "إجابة خاطئة. حاول مرة أخرى!";
+            feedback.className = "exercise-feedback incorrect";
+        }
+    }
+
+    checkTextExercise(lessonIndex, exerciseIndex) {
+        const input = document.getElementById(`ex${lessonIndex}_${exerciseIndex}`);
+        const feedback = document.getElementById(`feedback${lessonIndex}_${exerciseIndex}`);
+        
+        // للتمارين النصية، نعتبر أي إجابة صحيحة لتشجيع الطالب
+        if (input.value.trim() !== '') {
+            feedback.textContent = "إجابة جيدة! استمر في التعلم! 🌟";
+            feedback.className = "exercise-feedback correct";
+        } else {
+            feedback.textContent = "يرجى كتابة إجابة";
+            feedback.className = "exercise-feedback incorrect";
+        }
+    }
+
+    markCompleted(index) {
+        if (this.currentUser && !this.currentUser.completed.includes(index)) {
+            this.currentUser.completed.push(index);
+            this.saveUsers(this.users);
+            this.updateProgress();
+            alert(`🎉 تهانينا! أكملت درس "${lessons[index]}"`);
+            this.closeLesson();
+        }
+    }
+
+    closeLesson() {
+        document.getElementById('lessonBox').classList.add('hidden');
+        document.getElementById('lessonsList').classList.remove('hidden');
+        this.loadLessons();
+    }
+
+    updateProgress() {
+        const progress = (this.currentUser.completed.length / lessons.length) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+        document.getElementById('progressText').textContent = Math.round(progress) + '%';
+        
+        const finishBtn = document.getElementById('finishBtn');
+        if (this.currentUser.completed.length >= lessons.length) {
+            finishBtn.disabled = false;
+            finishBtn.innerHTML = '<i class="fas fa-trophy"></i> إنهاء الدورة والحصول على الشهادة';
+        } else {
+            finishBtn.disabled = true;
+            finishBtn.innerHTML = `إكمال ${lessons.length - this.currentUser.completed.length} درس باقي`;
+        }
+    }
+
+    addUser(fName, lName, password) {
+        // التحقق من عدم وجود مستخدم بنفس الاسم وكود الدخول
+        const existingUser = this.users.find(u => u.f === fName && u.l === lName && u.p === password);
+        if (existingUser) {
+            alert('يوجد مستخدم بنفس الاسم وكود الدخول!');
+            return;
+        }
+        
+        const newUser = {
+            id: Date.now(),
+            f: fName,
+            l: lName,
+            p: password,
+            admin: false,
+            completed: [],
+            certificateNumber: null
+        };
+        
+        this.users.push(newUser);
+        this.saveUsers(this.users);
+        this.loadUsersList();
+    }
+
+    loadUsersList() {
+        const container = document.getElementById('usersList');
+        container.innerHTML = '';
+        
+        this.users.forEach(user => {
+            if (!user.admin) {
+                const userDiv = document.createElement('div');
+                userDiv.className = 'lesson';
+                userDiv.innerHTML = `
+                    <div>
+                        <strong>${user.f} ${user.l}</strong>
+                        <p style="color: #666; margin: 5px 0;">كود الدخول: <span class="user-code">${user.p}</span></p>
+                        ${user.certificateNumber ? `<p style="color: var(--success);">رقم الشهادة: ${user.certificateNumber}</p>` : ''}
+                    </div>
+                    <div style="color: var(--primary); font-weight: bold;">
+                        ${user.completed.length}/${lessons.length}
+                    </div>
+                `;
+                container.appendChild(userDiv);
+            }
+        });
+    }
+
+    generateCertificateNumber() {
+        const year = new Date().getFullYear();
+        const number = this.certificateCounter.toString().padStart(3, '0');
+        this.certificateCounter++;
+        this.saveCertificateCounter(this.certificateCounter);
+        return `CERT-${number}-${year}`;
+    }
+
+    finishCourse() {
+        // توليد رقم الشهادة إذا لم يكن موجوداً
+        if (!this.currentUser.certificateNumber) {
+            this.currentUser.certificateNumber = this.generateCertificateNumber();
+            this.saveUsers(this.users);
+        }
+        
+        document.getElementById('certName').textContent = this.currentUser.f + ' ' + this.currentUser.l;
+        document.getElementById('certNumber').textContent = 'رقم الشهادة: ' + this.currentUser.certificateNumber;
+        document.getElementById('printCertNumber').textContent = this.currentUser.certificateNumber;
+        document.getElementById('certDate').textContent = new Date().toLocaleDateString('fr-EG');
+        
+        this.hideAllScreens();
+        document.getElementById('certificatePage').classList.remove('hidden');
+    }
+
+    logout() {
+        location.reload();
+    }
+
+    backToLogin() {
+        this.currentUser = null;
+        this.showLoginScreen();
+    }
+}
+
+// ============ تهيئة التطبيق ============
+const academy = new MathAcademy();
+
+// ============ الدوال العامة ============
+function login() {
+    const fName = document.getElementById('fName').value;
+    const lName = document.getElementById('lName').value;
+    const pass = document.getElementById('pass').value;
+    
+    if (!fName || !lName || !pass) {
+        alert('يرجى ملء جميع الحقول');
+        return;
+    }
+    
+    if (academy.login(fName, lName, pass)) {
+        console.log('تم الدخول بنجاح');
+    } else {
+        alert('بيانات الدخول غير صحيحة!');
+    }
+}
+
+function adminLogin() {
+    const adminCode = prompt("🔐 أدخل كود المسؤول:", "");
+    
+    if (!adminCode) {
+        alert("❌ يجب إدخال كود المسؤول");
+        return;
+    }
+    
+    // كود المسؤول (يمكن تغييره)
+    const correctAdminCode = "admin2024";
+    
+    if (adminCode !== correctAdminCode) {
+        alert("❌ كود المسؤول غير صحيح!");
+        return;
+    }
+    
+    // تأكيد الدخول كمسؤول
+    const confirmLogin = confirm("⚠️ هل تريد الدخول كمسؤول؟");
+    if (!confirmLogin) {
+        alert("تم الإلغاء");
+        return;
+    }
+    
+    // إذا كان الكود صحيحاً، أكمل الدخول
+    document.getElementById('fName').value = 'Admin';
+    document.getElementById('lName').value = 'User';
+    document.getElementById('pass').value = 'admin123';
+    
+    // عرض رسالة تحميل
+    const loginBtn = document.querySelector('.btn-warning');
+    const originalText = loginBtn.innerHTML;
+    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الدخول...';
+    loginBtn.disabled = true;
+    
+    setTimeout(() => {
+        login();
+        loginBtn.innerHTML = originalText;
+        loginBtn.disabled = false;
+    }, 1000);
+}
+
+function addUser() {
+    const fName = document.getElementById('newF').value;
+    const lName = document.getElementById('newL').value;
+    const pass = document.getElementById('newP').value;
+    
+    if (!fName || !lName || !pass) {
+        alert('يرجى ملء جميع الحقول!');
+        return;
+    }
+    
+    academy.addUser(fName, lName, pass);
+    document.getElementById('newF').value = '';
+    document.getElementById('newL').value = '';
+    document.getElementById('newP').value = '';
+    
+    alert('تم إضافة المستخدم بنجاح!');
+}
+
+function printCertificate() {
+    window.print();
+}
+
+function finishCourse() { academy.finishCourse(); }
+function logout() { academy.logout(); }
+function backToLogin() { academy.backToLogin(); }
+</script>
+</body>
+</html>
