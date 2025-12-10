@@ -529,6 +529,41 @@
 </div>
 
 <script>
+    
+let USERS = [];
+
+// تحميل المستخدمين من GitHub
+async function loadUsers() {
+  try {
+    const res = await fetch("LINK_TO_USERS_JSON");
+    USERS = await res.json();
+  } catch (e) {
+    alert("خطأ في تحميل المستخدمين");
+  }
+}
+
+loadUsers();
+
+// تسجيل الدخول
+async function login() {
+  const f = fName.value.trim();
+  const l = lName.value.trim();
+  const p = pass.value.trim();
+
+  const user = USERS.find(
+    u => u.f === f && u.l === l && u.p === p
+  );
+
+  if (!user) {
+    alert("❌ بيانات غير صحيحة");
+    return;
+  }
+
+  loginScreen.classList.add("hidden");
+  userPage.classList.remove("hidden");
+  username.textContent = `${f} ${l}`;
+}
+
 // ============ بيانات الدورة الشاملة من PDF ============
 const lessons = [
     "مقدمة في الحساب الذهني وأهميته",
