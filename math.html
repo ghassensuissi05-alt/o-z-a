@@ -535,7 +535,7 @@ let USERS = [];
 // تحميل المستخدمين من GitHub
 async function loadUsers() {
   try {
-    const res = await fetch("LINK_TO_USERS_JSON");
+    const res = await fetch("https://raw.githubusercontent.com/ghassensuissi05-alt/o-z-a/refs/heads/main/users.json");
     USERS = await res.json();
   } catch (e) {
     alert("خطأ في تحميل المستخدمين");
