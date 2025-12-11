@@ -2097,27 +2097,20 @@ function login() {
 }
 
 function adminLogin() {
-    const adminCode = prompt("🔐 أدخل كود المسؤول:", "");
-    
-    if (!adminCode) {
-        alert("❌ يجب إدخال كود المسؤول");
+    const f = fName.value.trim();
+    const l = lName.value.trim();
+    const p = pass.value.trim();
+
+    // هنا تعمل أنت حساب المسؤول
+    if (f === "admin" && l === "admin" && p === "0000") {
+        loginScreen.classList.add("hidden");
+        adminPage.classList.remove("hidden");
         return;
     }
-    
-    // كود المسؤول (يمكن تغييره)
-    const correctAdminCode = "admin2024";
-    
-    if (adminCode !== correctAdminCode) {
-        alert("❌ كود المسؤول غير صحيح!");
-        return;
-    }
-    
-    // تأكيد الدخول كمسؤول
-    const confirmLogin = confirm("⚠️ هل تريد الدخول كمسؤول؟");
-    if (!confirmLogin) {
-        alert("تم الإلغاء");
-        return;
-    }
+
+    alert("❌ بيانات المسؤول غير صحيحة");
+}
+
     
     // إذا كان الكود صحيحاً، أكمل الدخول
     document.getElementById('fName').value = 'Admin';
