@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   }
 
   const { f, l, p } = req.body;
-
+  
   if (!f || !l || !p) {
     return res.status(400).json({ error: "Missing fields" });
   }
@@ -14,31 +14,47 @@ export default async function handler(req, res) {
   const filePath = "users.json";
   const token = process.env.GITHUB_TOKEN;
 
-  // Fetch existing file
-  const fileRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
+  try {
+    // Fetch existing file
+    const fileRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
 
-  const fileData = await fileRes.json();
-  const content = Buffer.from(fileData.content, "base64").toString();
-  const users = JSON.parse(content);
+    const fileData = await fileRes.json();
+    const content = Buffer.from(fileData.content, "base64").toString();
+    const users = JSON.parse(content);
 
-  // Add new user
-  users.push({ f, l, p });
+    // Check if user already exists
+    const existingUser = users.find(user => user.f === f && user.l === l && user.p === p);
+    if (existingUser) {
+      return res.status(400).json({ error: "User already exists" });
+    }
 
-  // Commit update
-  await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      message: "Add new user",
-      content: Buffer.from(JSON.stringify(users, null, 2)).toString("base64"),
-      sha: fileData.sha
-    })
-  });
+    // Add new user
+    users.push({ f, l, p });
 
-  return res.status(200).json({ success: true });
+    // Commit update
+    const commitRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Add new user",
+        content: Buffer.from(JSON.stringify(users, null, 2)).toString("base64"),
+        sha: fileData.sha
+      })
+    });
+
+    const commitResult = await commitRes.json();
+    if (commitResult.error) {
+      return res.status(500).json({ error: commitResult.error });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
 }
