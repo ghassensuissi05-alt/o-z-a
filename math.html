@@ -1991,52 +1991,106 @@ class MathAcademy {
         }
     }
 
-    addUser(fName, lName, password) {
-        // التحقق من عدم وجود مستخدم بنفس الاسم وكود الدخول
-        const existingUser = this.users.find(u => u.f === fName && u.l === lName && u.p === password);
-        if (existingUser) {
-            alert('يوجد مستخدم بنفس الاسم وكود الدخول!');
-            return;
+   async function addUser() {
+  const fName = document.getElementById('newF').value;
+  const lName = document.getElementById('newL').value;
+  const pass = document.getElementById('newP').value;
+  
+  if (!fName || !lName || !pass) {
+    alert('يرجى ملء جميع الحقول!');
+    return;
+  }
+  
+  // إضافة مؤشر تحميل
+  const btn = event.target;
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإضافة...';
+  btn.disabled = true;
+  
+  try {
+    // 1. جلب الملف الحالي من GitHub
+    const getRes = await fetch(
+      `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}`,
+      {
+        headers: {
+          'Authorization': `token ${GITHUB_CONFIG.token}`,
+          'Accept': 'application/vnd.github.v3+json'
         }
-        
-        const newUser = {
-            id: Date.now(),
-            f: fName,
-            l: lName,
-            p: password,
-            admin: false,
-            completed: [],
-            certificateNumber: null
-        };
-        
-        this.users.push(newUser);
-        this.saveUsers(this.users);
-        this.loadUsersList();
-    }
+      }
+    );
+    
+    if (!getRes.ok) throw new Error('فشل في جلب الملف');
+    
+    const fileData = await getRes.json();
+    const currentContent = JSON.parse(atob(fileData.content));
+    
+    // 2. إضافة المستخدم الجديد
+    const newUser = { f: fName, l: lName, p: pass };
+    currentContent.push(newUser);
+    
+    // 3. رفع الملف المعدل
+    const updateRes = await fetch(
+      `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.path}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${GITHUB_CONFIG.token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `إضافة مستخدم جديد: ${fName} ${lName}`,
+          content: btoa(JSON.stringify(currentContent, null, 2)),
+          sha: fileData.sha
+        })
+      }
+    );
+    
+    if (!updateRes.ok) throw new Error('فشل في تحديث الملف');
+    
+    // 4. تحديث القائمة المحلية
+    USERS.push(newUser);
+    academy.users = USERS;
+    academy.loadUsersList();
+    
+    // 5. تنظيف الحقول
+    document.getElementById('newF').value = '';
+    document.getElementById('newL').value = '';
+    document.getElementById('newP').value = '';
+    
+    alert('✅ تم إضافة المستخدم بنجاح وتحديث الملف على GitHub!');
+    
+  } catch (error) {
+    console.error('Error:', error);
+    alert('❌ حدث خطأ: ' + error.message);
+  } finally {
+    // إعادة حالة الزر
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+}
 
-    loadUsersList() {
-        const container = document.getElementById('usersList');
-        container.innerHTML = '';
-        
-        this.users.forEach(user => {
-            if (!user.admin) {
-                const userDiv = document.createElement('div');
-                userDiv.className = 'lesson';
-                userDiv.innerHTML = `
-                    <div>
-                        <strong>${user.f} ${user.l}</strong>
-                        <p style="color: #666; margin: 5px 0;">كود الدخول: <span class="user-code">${user.p}</span></p>
-                        ${user.certificateNumber ? `<p style="color: var(--success);">رقم الشهادة: ${user.certificateNumber}</p>` : ''}
-                    </div>
-                    <div style="color: var(--primary); font-weight: bold;">
-                        ${user.completed.length}/${lessons.length}
-                    </div>
-                `;
-                container.appendChild(userDiv);
-            }
-        });
+async function loadUsers() {
+  try {
+    // محاولة جلب من GitHub أولاً
+    const res = await fetch("https://raw.githubusercontent.com/ghassensuissi05-alt/o-z-a/refs/heads/main/users.json");
+    if (res.ok) {
+      USERS = await res.json();
+      console.log('تم تحميل', USERS.length, 'مستخدم من GitHub');
+    } else {
+      throw new Error('فشل تحميل الملف');
     }
-
+  } catch (e) {
+    console.error("خطأ في تحميل المستخدمين من GitHub:", e);
+    // استخدام بيانات افتراضية في حالة الخطأ
+    USERS = [
+      { "f": "Ahmed", "l": "Dridi", "p": "1111" },
+      { "f": "Sara", "l": "Ben Ali", "p": "2222" },
+      { "f": "Youssef", "l": "Trabelsi", "p": "3333" }
+    ];
+    alert("⚠️ تم تحميل بيانات محلية بسبب مشكلة في الاتصال");
+  }
+}
     generateCertificateNumber() {
         const year = new Date().getFullYear();
         const number = this.certificateCounter.toString().padStart(3, '0');
